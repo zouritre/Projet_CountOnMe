@@ -10,5 +10,18 @@ import Foundation
 
 class VerifyExpressionValidity {
     
+    var elements: [String]?
+
+    var expressionIsCorrect: Bool {
+        return elements?.last != "+" && elements?.last != "-"
+    }
     
+    var expressionHaveEnoughElement: Bool {
+
+        return elements?.count ?? 0 >= 3
+    }
+    
+    var canAddOperator: Bool {
+        return elements?.last != "+" && elements?.last != "-"
+    }
 }
