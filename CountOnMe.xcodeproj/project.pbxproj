@@ -86,7 +86,6 @@
 				E915DF5527DCB681000491D9 /* Controller */,
 				E915DF5427DCB67B000491D9 /* Model */,
 				E915DF5327DCB65F000491D9 /* Supporting_Files */,
-				1FA43BD6224E569900F565CB /* Main.storyboard */,
 			);
 			path = CountOnMe;
 			sourceTree = "<group>";
@@ -122,6 +121,7 @@
 		E915DF5627DCB692000491D9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1FA43BD6224E569900F565CB /* Main.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
