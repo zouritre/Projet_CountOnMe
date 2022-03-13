@@ -13,7 +13,7 @@ class VerifyExpressionValidity {
     var elements: [String]?
 
     var expressionIsCorrect: Bool {
-        return elements?.last != "+" && elements?.last != "-"
+        return elements?.last != "+" && elements?.last != "-" && elements?.last != "x" && elements?.last != "/"
     }
     
     var expressionHaveEnoughElement: Bool {
@@ -22,6 +22,6 @@ class VerifyExpressionValidity {
     }
     
     var canAddOperator: Bool {
-        return elements?.last != "+" && elements?.last != "-"
+        return elements?.last != "+" && elements?.last != "-" && elements?.last != "x" && elements?.last != "/"
     }
 }

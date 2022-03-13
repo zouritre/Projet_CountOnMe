@@ -80,6 +80,40 @@ class ViewController: UIViewController {
             self.present(alertVC, animated: true, completion: nil)
         }
     }
+    
+    @IBAction func tappedMultiplyButton(_ sender: UIButton) {
+        
+        guard let verifyExpressionValidity = verifyExpressionValidity else {
+            return
+        }
+        
+        verifyExpressionValidity.elements = elements
+        
+        if verifyExpressionValidity.canAddOperator {
+            textView.text.append(" x ")
+        } else {
+            let alertVC = UIAlertController(title: "Zéro!", message: "Un operateur est déja mis !", preferredStyle: .alert)
+            alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            self.present(alertVC, animated: true, completion: nil)
+        }
+    }
+    
+    @IBAction func tappedDiviseButton(_ sender: UIButton) {
+        
+        guard let verifyExpressionValidity = verifyExpressionValidity else {
+            return
+        }
+        
+        verifyExpressionValidity.elements = elements
+        
+        if verifyExpressionValidity.canAddOperator {
+            textView.text.append(" / ")
+        } else {
+            let alertVC = UIAlertController(title: "Zéro!", message: "Un operateur est déja mis !", preferredStyle: .alert)
+            alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            self.present(alertVC, animated: true, completion: nil)
+        }
+    }
 
     @IBAction func tappedEqualButton(_ sender: UIButton) {
         

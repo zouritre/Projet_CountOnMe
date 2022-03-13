@@ -29,6 +29,8 @@ class ComputeExpression {
             switch operand {
             case "+": result = left + right
             case "-": result = left - right
+            case "x": result = left * right
+            case "/": result = left / right
             default: fatalError("Unknown operator !")
             }
             
