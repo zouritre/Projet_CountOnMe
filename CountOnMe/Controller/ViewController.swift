@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     @IBOutlet var numberButtons: [UIButton]!
     
+    /// Return an array of strings corresponding to each string elements of textView.text separated by a space
     var elements: [String] {
         return textView.text.split(separator: " ").map { "\($0)" }
     }
@@ -20,6 +21,8 @@ class ViewController: UIViewController {
     
     var verifyExpressionValidity: VerifyExpressionValidity?
     
+    
+    /// Return true if textView contain the equal operator symbol
     var expressionHaveResult: Bool {
         return textView.text.firstIndex(of: "=") != nil
     }
@@ -35,6 +38,8 @@ class ViewController: UIViewController {
     
     //MARK: -   View actions
     
+    /// Empty textView.text if an expression have previously been calculated and append to it the sender.title
+    /// - Parameter sender: A UIButton corresponding to the tapped number
     @IBAction func tappedNumberButton(_ sender: UIButton) {
         guard let numberText = sender.title(for: .normal) else {
             return
@@ -47,6 +52,9 @@ class ViewController: UIViewController {
         textView.text.append(numberText)
     }
     
+    
+    /// Append the addition operator symbol to textView.text if possible or display an alert
+    /// - Parameter sender: The UIButton of the tapped operator symbol
     @IBAction func tappedAdditionButton(_ sender: UIButton) {
         
         guard let verifyExpressionValidity = verifyExpressionValidity else {
@@ -64,6 +72,8 @@ class ViewController: UIViewController {
         }
     }
     
+    /// Append the subtraction operator symbol to textView.text if possible or display an alert
+    /// - Parameter sender: The UIButton of the tapped operator symbol
     @IBAction func tappedSubstractionButton(_ sender: UIButton) {
         
         guard let verifyExpressionValidity = verifyExpressionValidity else {
@@ -81,6 +91,8 @@ class ViewController: UIViewController {
         }
     }
     
+    /// Append the multiplication operator symbol to textView.text if possible or display an alert
+    /// - Parameter sender: The UIButton of the tapped operator symbol
     @IBAction func tappedMultiplyButton(_ sender: UIButton) {
         
         guard let verifyExpressionValidity = verifyExpressionValidity else {
@@ -98,6 +110,8 @@ class ViewController: UIViewController {
         }
     }
     
+    /// Append the division operator symbol to textView.text if possible or display an alert
+    /// - Parameter sender: The UIButton of the tapped operator symbol
     @IBAction func tappedDiviseButton(_ sender: UIButton) {
         
         guard let verifyExpressionValidity = verifyExpressionValidity else {
@@ -114,7 +128,9 @@ class ViewController: UIViewController {
             self.present(alertVC, animated: true, completion: nil)
         }
     }
-
+    
+    /// Compute textView.text expression and displays the result or display an alert
+    /// - Parameter sender: The UIButton of the tapped operator symbol
     @IBAction func tappedEqualButton(_ sender: UIButton) {
         
         guard let verifyExpressionValidity = verifyExpressionValidity else {

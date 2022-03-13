@@ -13,6 +13,7 @@ class ComputeExpressionTest: XCTestCase {
     
     var computeExpression: ComputeExpression?
     
+    /// Test operationsToReduce method
     func testGivenExpressionIsValidWhenEqualIsPressedThenShouldDisplayCorrectResult() {
         
         computeExpression = ComputeExpression(elements: ["1", "+", "10"])

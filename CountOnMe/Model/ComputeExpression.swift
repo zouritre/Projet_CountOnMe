@@ -17,6 +17,8 @@ class ComputeExpression {
         self.elements = elements
     }
     
+    /// Compute the whole elements array as a valid math operation
+    /// - Returns: A single item array containing the result of the operation
     func operationsToReduce() -> [String] {
         
         // Iterate over operations while an operand still here
