@@ -11,7 +11,7 @@ import XCTest
 
 class VerifyExpressionValidityTest: XCTestCase {
 
-    var verifyExpressionValidity: VerifyExpressionValidity?
+    var verifyExpressionValidity: VerifyExpressionValidity!
 
     override func setUp() {
         super.setUp()
@@ -20,11 +20,6 @@ class VerifyExpressionValidityTest: XCTestCase {
 
     /// Test expressionIsCorrect computed variable
     func testGivenOperatorSymbolIsLastItemWhenEqualButtonIsPressedThenExpressionIsNotValid() {
-
-        guard let verifyExpressionValidity = verifyExpressionValidity else {
-            XCTAssertTrue(Bool(false))
-            return
-        }
 
         verifyExpressionValidity.elements = ["+"]
         XCTAssertFalse(verifyExpressionValidity.expressionIsCorrect)
@@ -48,11 +43,6 @@ class VerifyExpressionValidityTest: XCTestCase {
     /// Test expressionHaveEnoughElement computed variable
     func testGivenExpressionHaveThreeElementsOrMoreWhenEqualIsPressedThenExpressionIsCorrect() {
 
-        guard let verifyExpressionValidity = verifyExpressionValidity else {
-            XCTAssertTrue(Bool(false))
-            return
-        }
-
         verifyExpressionValidity.elements = ["10"]
         XCTAssertFalse(verifyExpressionValidity.expressionHaveEnoughElement)
 
@@ -74,11 +64,6 @@ class VerifyExpressionValidityTest: XCTestCase {
 
     /// Test canAddOperator computed variable
     func testGivenOperatorSymbolIsLastItemWhenEqualButtonIsPressedThenCannotAddOperator() {
-
-        guard let verifyExpressionValidity = verifyExpressionValidity else {
-            XCTAssertTrue(Bool(false))
-            return
-        }
 
         verifyExpressionValidity.elements = ["+"]
         XCTAssertFalse(verifyExpressionValidity.canAddOperator)

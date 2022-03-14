@@ -19,7 +19,7 @@ class ViewController: UIViewController {
 
     // MARK: - Error check computed variables
 
-    var verifyExpressionValidity: VerifyExpressionValidity?
+    var verifyExpressionValidity: VerifyExpressionValidity!
 
     /// Return true if textView contain the equal operator symbol
     var expressionHaveResult: Bool {
@@ -54,10 +54,6 @@ class ViewController: UIViewController {
     /// - Parameter sender: The UIButton of the tapped operator symbol
     @IBAction func tappedAdditionButton(_ sender: UIButton) {
 
-        guard let verifyExpressionValidity = verifyExpressionValidity else {
-            return
-        }
-
         verifyExpressionValidity.elements = elements
 
         if verifyExpressionValidity.canAddOperator {
@@ -72,10 +68,6 @@ class ViewController: UIViewController {
     /// Append the subtraction operator symbol to textView.text if possible or display an alert
     /// - Parameter sender: The UIButton of the tapped operator symbol
     @IBAction func tappedSubstractionButton(_ sender: UIButton) {
-
-        guard let verifyExpressionValidity = verifyExpressionValidity else {
-            return
-        }
 
         verifyExpressionValidity.elements = elements
 
@@ -92,10 +84,6 @@ class ViewController: UIViewController {
     /// - Parameter sender: The UIButton of the tapped operator symbol
     @IBAction func tappedMultiplyButton(_ sender: UIButton) {
 
-        guard let verifyExpressionValidity = verifyExpressionValidity else {
-            return
-        }
-
         verifyExpressionValidity.elements = elements
 
         if verifyExpressionValidity.canAddOperator {
@@ -111,10 +99,6 @@ class ViewController: UIViewController {
     /// - Parameter sender: The UIButton of the tapped operator symbol
     @IBAction func tappedDiviseButton(_ sender: UIButton) {
 
-        guard let verifyExpressionValidity = verifyExpressionValidity else {
-            return
-        }
-
         verifyExpressionValidity.elements = elements
 
         if verifyExpressionValidity.canAddOperator {
@@ -129,10 +113,6 @@ class ViewController: UIViewController {
     /// Compute textView.text expression and displays the result or display an alert
     /// - Parameter sender: The UIButton of the tapped operator symbol
     @IBAction func tappedEqualButton(_ sender: UIButton) {
-
-        guard let verifyExpressionValidity = verifyExpressionValidity else {
-            return
-        }
 
         verifyExpressionValidity.elements = elements
 
