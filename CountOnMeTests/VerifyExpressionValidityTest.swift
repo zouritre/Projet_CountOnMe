@@ -32,18 +32,34 @@ class VerifyExpressionValidityTest: XCTestCase {
 
         verifyExpressionValidity.elements = ["/"]
         XCTAssertFalse(verifyExpressionValidity.expressionIsCorrect)
+        
+        verifyExpressionValidity.elements = []
+        XCTAssertFalse(verifyExpressionValidity.expressionIsCorrect)
 
         verifyExpressionValidity.elements = ["10"]
-        XCTAssertTrue(verifyExpressionValidity.expressionIsCorrect)
+        XCTAssertFalse(verifyExpressionValidity.expressionIsCorrect)
+        
+        verifyExpressionValidity.elements = ["10", "/"]
+        XCTAssertFalse(verifyExpressionValidity.expressionIsCorrect)
+        
+        verifyExpressionValidity.elements = ["-100", "/", "0"]
+        XCTAssertFalse(verifyExpressionValidity.expressionIsCorrect)
+        
+        verifyExpressionValidity.elements = ["-100", "/", "0", "+", "10", "/", "2"]
+        XCTAssertFalse(verifyExpressionValidity.expressionIsCorrect)
 
-        verifyExpressionValidity.elements = ["-100", "/", "2"]
+        verifyExpressionValidity.elements = ["-100", "/", "2", "+", "10", "/", "2"]
         XCTAssertTrue(verifyExpressionValidity.expressionIsCorrect)
+        
     }
 
     /// Test expressionHaveEnoughElement computed variable
     func testGivenExpressionHaveThreeElementsOrMoreWhenEqualIsPressedThenExpressionIsCorrect() {
 
         verifyExpressionValidity.elements = ["10"]
+        XCTAssertFalse(verifyExpressionValidity.expressionHaveEnoughElement)
+        
+        verifyExpressionValidity.elements = ["10", "+"]
         XCTAssertFalse(verifyExpressionValidity.expressionHaveEnoughElement)
 
         verifyExpressionValidity.elements = ["15", "+", "5"]
@@ -72,10 +88,16 @@ class VerifyExpressionValidityTest: XCTestCase {
         XCTAssertFalse(verifyExpressionValidity.canAddOperator)
 
         verifyExpressionValidity.elements = ["x"]
-        XCTAssertFalse(verifyExpressionValidity.expressionIsCorrect)
+        XCTAssertFalse(verifyExpressionValidity.canAddOperator)
 
         verifyExpressionValidity.elements = ["/"]
-        XCTAssertFalse(verifyExpressionValidity.expressionIsCorrect)
+        XCTAssertFalse(verifyExpressionValidity.canAddOperator)
+        
+        verifyExpressionValidity.elements = ["10", "/"]
+        XCTAssertFalse(verifyExpressionValidity.canAddOperator)
+        
+        verifyExpressionValidity.elements = []
+        XCTAssertFalse(verifyExpressionValidity.canAddOperator)
 
         verifyExpressionValidity.elements = ["10"]
         XCTAssertTrue(verifyExpressionValidity.canAddOperator)

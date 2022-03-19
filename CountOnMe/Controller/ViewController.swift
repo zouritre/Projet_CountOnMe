@@ -20,6 +20,8 @@ class ViewController: UIViewController {
     // MARK: - Error check computed variables
 
     var verifyExpressionValidity: VerifyExpressionValidity!
+    
+    var computeExpression: ComputeExpression!
 
     /// Return true if textView contain the equal operator symbol
     var expressionHaveResult: Bool {
@@ -32,6 +34,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         verifyExpressionValidity = VerifyExpressionValidity()
+        computeExpression = ComputeExpression()
     }
 
     // MARK: - View actions
@@ -130,7 +133,7 @@ class ViewController: UIViewController {
 
         // MARK: - Create local copy of operations
 
-        let computeExpression = ComputeExpression(elements: elements)
+        computeExpression.elements = elements
 
         textView.text.append(" = \(computeExpression.operationsToReduce().first!)")
     }
