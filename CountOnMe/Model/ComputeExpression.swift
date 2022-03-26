@@ -16,15 +16,17 @@ class ComputeExpression {
     /// - Returns: A single item array containing the result of the operation
     func operationsToReduce() -> [String] {
         
-        var nextAvailableIndex = 0
+        /// Index of a multiply or divise operator symbol
+        var operatorSymbolIndex = 0
         
-        // Calculate division and multiplication, remove the operation from elements array and insert the result instead at the index of the first operand
+        // Calculate division and multiplication first
         elements.forEach{
             
+            // Compute a multiply or divisie operation
             if $0 == "/" || $0 == "x"{
-                let left = Float32(elements[nextAvailableIndex-1])!
-                let operand = elements[nextAvailableIndex]
-                let right = Float32(elements[nextAvailableIndex+1])!
+                let left = Float32(elements[operatorSymbolIndex-1])!
+                let operand = elements[operatorSymbolIndex]
+                let right = Float32(elements[operatorSymbolIndex+1])!
                 
                 let result: Float32
                 
@@ -34,14 +36,17 @@ class ComputeExpression {
                 default: fatalError("Unknown operator !")
                 }
                 
-                elements.removeSubrange(nextAvailableIndex-1...nextAvailableIndex+1)
+                // Remove the divise or multiply operation from the array elements
+                elements.removeSubrange(operatorSymbolIndex-1...operatorSymbolIndex+1)
                 
-                nextAvailableIndex -= 1
+                operatorSymbolIndex -= 1
                 
-                elements.insert(String(result), at: nextAvailableIndex)
+                // Insert the result of the operation at the index of the first operand of the removed operation
+                elements.insert(String(result), at: operatorSymbolIndex)
             }
             else {
-                nextAvailableIndex += 1
+                // A divise or multiplay operator symbol has not been found at this index
+                operatorSymbolIndex += 1
             }
             
         }

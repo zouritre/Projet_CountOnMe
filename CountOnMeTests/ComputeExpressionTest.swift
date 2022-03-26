@@ -16,20 +16,24 @@ class ComputeExpressionTest: XCTestCase {
     /// Test operationsToReduce method
     func testGivenExpressionIsValidWhenEqualIsPressedThenShouldDisplayCorrectResult() {
         
-        computeExpression = ComputeExpression(elements: ["1", "+", "10"])
-        XCTAssertEqual(computeExpression?.operationsToReduce(), ["11.0"])
+        guard let computeExpression = computeExpression else {
+            return
+        }
 
-        computeExpression = ComputeExpression(elements: ["1", "-", "10"])
-        XCTAssertEqual(computeExpression?.operationsToReduce(), ["-9.0"])
+        computeExpression.elements = ["1", "+", "10"]
+        XCTAssertEqual(computeExpression.operationsToReduce(), ["11.0"])
 
-        computeExpression = ComputeExpression(elements: ["2", "x", "10"])
-        XCTAssertEqual(computeExpression?.operationsToReduce(), ["20.0"])
+        computeExpression.elements = ["1", "-", "10"]
+        XCTAssertEqual(computeExpression.operationsToReduce(), ["-9.0"])
 
-        computeExpression = ComputeExpression(elements: ["10", "/", "2"])
-        XCTAssertEqual(computeExpression?.operationsToReduce(), ["5.0"])
+        computeExpression.elements = ["2", "x", "10"]
+        XCTAssertEqual(computeExpression.operationsToReduce(), ["20.0"])
 
-        computeExpression = ComputeExpression(elements: ["5", "+", "10", "-", "3", "x", "2", "/", "2"])
-        XCTAssertEqual(computeExpression?.operationsToReduce(), ["12.0"])
+        computeExpression.elements = ["10", "/", "2"]
+        XCTAssertEqual(computeExpression.operationsToReduce(), ["5.0"])
+
+        computeExpression.elements = ["5", "+", "10", "-", "3", "x", "2", "/", "2"]
+        XCTAssertEqual(computeExpression.operationsToReduce(), ["12.0"])
         
     }
 
