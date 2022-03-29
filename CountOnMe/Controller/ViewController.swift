@@ -32,7 +32,6 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         verifyExpressionValidity = VerifyExpressionValidity()
         computeExpression = ComputeExpression()
     }

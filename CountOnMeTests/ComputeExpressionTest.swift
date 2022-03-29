@@ -11,15 +11,11 @@ import XCTest
 
 class ComputeExpressionTest: XCTestCase {
 
-    var computeExpression: ComputeExpression?
+    var computeExpression: ComputeExpression = ComputeExpression()
 
     /// Test operationsToReduce method
     func testGivenExpressionIsValidWhenEqualIsPressedThenShouldDisplayCorrectResult() {
         
-        guard let computeExpression = computeExpression else {
-            return
-        }
-
         computeExpression.elements = ["1", "+", "10"]
         XCTAssertEqual(computeExpression.operationsToReduce(), ["11.0"])
 

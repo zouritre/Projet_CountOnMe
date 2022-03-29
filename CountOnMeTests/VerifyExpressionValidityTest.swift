@@ -11,7 +11,7 @@ import XCTest
 
 class VerifyExpressionValidityTest: XCTestCase {
 
-    var verifyExpressionValidity: VerifyExpressionValidity!
+    var verifyExpressionValidity: VerifyExpressionValidity = VerifyExpressionValidity()
 
     override func setUp() {
         super.setUp()
