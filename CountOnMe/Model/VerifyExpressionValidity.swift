@@ -14,8 +14,9 @@ class VerifyExpressionValidity {
     
     private var zeroDivision : Bool = false
 
-    /// Return true if the last item of array elements is not an operator symbol
+    /// Return true if the last item of array elements is not an operator symbol or a division by zero
     var expressionIsCorrect: Bool {
+        
         for (index, item) in elements.enumerated() {
             if item == "/" && index < elements.count-1{
                 if elements[index+1] == "0" {
@@ -28,17 +29,16 @@ class VerifyExpressionValidity {
             }
         }
         
-        return elements.last != "+" && elements.last != "-" && elements.last != "x" && elements.last != "/" && elements.count >= 3 && zeroDivision == false
+        return canAddOperator && zeroDivision == false && expressionHaveEnoughElement
     }
 
     /// Return true if array element size is at least 3
     var expressionHaveEnoughElement: Bool {
-
         return elements.count >= 3
     }
 
     /// Return true if the last item of array elements is not an operator symbol
     var canAddOperator: Bool {
-        return elements.last != "+" && elements.last != "-" && elements.last != "x" && elements.last != "/" && elements.count >= 1
+        return elements.last != "+" && elements.last != "-" && elements.last != "x" && elements.last != "/"
     }
 }

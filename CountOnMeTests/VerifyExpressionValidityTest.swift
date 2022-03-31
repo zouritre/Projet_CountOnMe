@@ -18,8 +18,8 @@ class VerifyExpressionValidityTest: XCTestCase {
         verifyExpressionValidity = VerifyExpressionValidity()
     }
 
-    /// Test expressionIsCorrect computed variable
-    func testGivenOperatorSymbolIsLastItemWhenEqualButtonIsPressedThenExpressionIsNotValid() {
+    /// Test if given expression is a correct math operation
+    func testGivenOperationHasNoResultWhenEqualButtonIsPressedThenExpressionIsNotValid() {
 
         verifyExpressionValidity.elements = ["+"]
         XCTAssertFalse(verifyExpressionValidity.expressionIsCorrect)
@@ -27,83 +27,41 @@ class VerifyExpressionValidityTest: XCTestCase {
         verifyExpressionValidity.elements = ["-"]
         XCTAssertFalse(verifyExpressionValidity.expressionIsCorrect)
 
+        // Should return false if expression has only one element or last element is an operator symbol
         verifyExpressionValidity.elements = ["x"]
         XCTAssertFalse(verifyExpressionValidity.expressionIsCorrect)
 
         verifyExpressionValidity.elements = ["/"]
         XCTAssertFalse(verifyExpressionValidity.expressionIsCorrect)
         
+        // Should return false if expression is empty
         verifyExpressionValidity.elements = []
         XCTAssertFalse(verifyExpressionValidity.expressionIsCorrect)
 
+        // Should return false if expression has only one element
         verifyExpressionValidity.elements = ["10"]
         XCTAssertFalse(verifyExpressionValidity.expressionIsCorrect)
         
+        // Should return false if expression has only two elements or last element is an operator symbol
         verifyExpressionValidity.elements = ["10", "/"]
         XCTAssertFalse(verifyExpressionValidity.expressionIsCorrect)
         
+        // Should return false if expression has enough element but last one is an operator symbol
+        verifyExpressionValidity.elements = ["10", "/", "2", "+"]
+        XCTAssertFalse(verifyExpressionValidity.expressionIsCorrect)
+        
+        // Should return false if operation is a division by zero
         verifyExpressionValidity.elements = ["-100", "/", "0"]
         XCTAssertFalse(verifyExpressionValidity.expressionIsCorrect)
         
+        // Should return false if expression has correct format but contain division by zero
         verifyExpressionValidity.elements = ["-100", "/", "0", "+", "10", "/", "2"]
         XCTAssertFalse(verifyExpressionValidity.expressionIsCorrect)
 
+        // Should return true if expression has at least 3 elements, is a valid math operation and is not a division by zero
         verifyExpressionValidity.elements = ["-100", "/", "2", "+", "10", "/", "2"]
         XCTAssertTrue(verifyExpressionValidity.expressionIsCorrect)
         
-    }
-
-    /// Test expressionHaveEnoughElement computed variable
-    func testGivenExpressionHaveThreeElementsOrMoreWhenEqualIsPressedThenExpressionIsCorrect() {
-
-        verifyExpressionValidity.elements = ["10"]
-        XCTAssertFalse(verifyExpressionValidity.expressionHaveEnoughElement)
-        
-        verifyExpressionValidity.elements = ["10", "+"]
-        XCTAssertFalse(verifyExpressionValidity.expressionHaveEnoughElement)
-
-        verifyExpressionValidity.elements = ["15", "+", "5"]
-        XCTAssertTrue(verifyExpressionValidity.expressionHaveEnoughElement)
-
-        verifyExpressionValidity.elements = ["15", "-", "5"]
-        XCTAssertTrue(verifyExpressionValidity.expressionHaveEnoughElement)
-
-        verifyExpressionValidity.elements = ["10", "x", "10"]
-        XCTAssertTrue(verifyExpressionValidity.expressionHaveEnoughElement)
-
-        verifyExpressionValidity.elements = ["100", "/", "10"]
-        XCTAssertTrue(verifyExpressionValidity.expressionHaveEnoughElement)
-
-        verifyExpressionValidity.elements = ["10", "-", "5", "+", "15", "x", "2", "/", "4"]
-        XCTAssertTrue(verifyExpressionValidity.expressionHaveEnoughElement)
-    }
-
-    /// Test canAddOperator computed variable
-    func testGivenOperatorSymbolIsLastItemWhenEqualButtonIsPressedThenCannotAddOperator() {
-
-        verifyExpressionValidity.elements = ["+"]
-        XCTAssertFalse(verifyExpressionValidity.canAddOperator)
-
-        verifyExpressionValidity.elements = ["-"]
-        XCTAssertFalse(verifyExpressionValidity.canAddOperator)
-
-        verifyExpressionValidity.elements = ["x"]
-        XCTAssertFalse(verifyExpressionValidity.canAddOperator)
-
-        verifyExpressionValidity.elements = ["/"]
-        XCTAssertFalse(verifyExpressionValidity.canAddOperator)
-        
-        verifyExpressionValidity.elements = ["10", "/"]
-        XCTAssertFalse(verifyExpressionValidity.canAddOperator)
-        
-        verifyExpressionValidity.elements = []
-        XCTAssertFalse(verifyExpressionValidity.canAddOperator)
-
-        verifyExpressionValidity.elements = ["10"]
-        XCTAssertTrue(verifyExpressionValidity.canAddOperator)
-
-        verifyExpressionValidity.elements = ["-97"]
-        XCTAssertTrue(verifyExpressionValidity.canAddOperator)
     }
 
 }

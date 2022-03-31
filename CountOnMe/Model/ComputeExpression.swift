@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class ComputeExpression {
 
@@ -15,20 +16,19 @@ class ComputeExpression {
     /// Compute the whole elements array as a valid math operation
     /// - Returns: A single item array containing the result of the operation
     func operationsToReduce() -> [String] {
-        
         /// Index of a multiply or divise operator symbol
         var operatorSymbolIndex = 0
         
         // Calculate division and multiplication first
-        elements.forEach{
+        elements.forEach {
             
-            // Compute a multiply or divisie operation
-            if $0 == "/" || $0 == "x"{
-                let left = Float32(elements[operatorSymbolIndex-1])!
+            // Compute a multiply or divise operation
+            if $0 == "/" || $0 == "x" {
+                let left = Float(elements[operatorSymbolIndex-1])!
                 let operand = elements[operatorSymbolIndex]
-                let right = Float32(elements[operatorSymbolIndex+1])!
+                let right = Float(elements[operatorSymbolIndex+1])!
                 
-                let result: Float32
+                let result: Float
                 
                 switch operand {
                 case "x": result = left * right
