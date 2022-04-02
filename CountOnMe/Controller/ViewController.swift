@@ -138,7 +138,17 @@ class ViewController: UIViewController {
             return
         }
         
-        textView.text.append(" = \(operationsToReduce)")
+        if operationsToReduce == "inf" {
+            let alertVC = UIAlertController(title: "Infini!", message: "Entrez une expression plus courte!", preferredStyle: .alert)
+            alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            
+            textView.text = ""
+            
+            return self.present(alertVC, animated: true, completion: nil)
+        }
+        else {
+            textView.text.append(" = \(operationsToReduce)")
+        }
     }
 
 }
