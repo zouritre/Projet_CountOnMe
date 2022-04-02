@@ -112,6 +112,10 @@ class ViewController: UIViewController {
         }
     }
 
+    @IBAction func tappedAcButton(_ sender: Any) {
+        textView.text = ""
+    }
+    
     /// Compute textView.text expression and displays the result or display an alert
     /// - Parameter sender: The UIButton of the tapped operator symbol
     @IBAction func tappedEqualButton(_ sender: UIButton) {
@@ -141,8 +145,6 @@ class ViewController: UIViewController {
         if operationsToReduce == "inf" {
             let alertVC = UIAlertController(title: "Infini!", message: "Entrez une expression plus courte!", preferredStyle: .alert)
             alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            
-            textView.text = ""
             
             return self.present(alertVC, animated: true, completion: nil)
         }
