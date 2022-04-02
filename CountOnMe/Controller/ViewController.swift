@@ -134,7 +134,11 @@ class ViewController: UIViewController {
 
         computeExpression.elements = elements
 
-        textView.text.append(" = \(computeExpression.operationsToReduce().first!)")
+        guard let operationsToReduce = computeExpression.operationsToReduce().first else {
+            return
+        }
+        
+        textView.text.append(" = \(operationsToReduce)")
     }
 
 }
